@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cake Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f8fc;
+      margin: 0;
+      padding: 0;
+    }
+
+header {
+  background-color: #ec1c24;  /* red background */
+  padding: 15px 30px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;   /* center vertically */
+}
+
+header img {
+  width: 60px;   /* adjust logo size */
+  height: auto;  /* keep aspect ratio */
+  margin-right: 15px;
+  margin-bottom:10px;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.cake-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  margin: 5px;
+  white-space: nowrap;
+}
+
+.cake-item {
+  flex: 0 0 auto; /* prevents shrinking */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 10px;
+  width: 220px;
+  display: inline-block;
+}
+
+    .cake-item img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+	  text-align: center;
+    }
+
+    .cake-item p {
+      margin: 8px 0;
+      font-weight: bold;
+	  text-align: center;
+    }
+
+    /* Order form */
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 350px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    hr {
+      margin: 20px 0;
+    }
+
+    .bill {
+      font-weight: bold;
+      color: green;
+      margin-top: 15px;
+      font-size: 18px;
+    }
+
+    .total {
+      display: inline-block;
+      background: #28a745;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+	a{
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:aqua;
+}
+  </style>
+  <script>
+function calculateOrder() {
+  const prices = {
+    rainbow: 300,
+    redvelvet: 250,
+    stacked: 600,
+    cartoon: 400,
+    wedding: 750
+  };
+
+  let rainbowQty = parseInt(document.getElementById("rainbow").value) || 0;
+  let redvelvetQty = parseInt(document.getElementById("redvelvet").value) || 0;
+  let stackedQty = parseInt(document.getElementById("stacked").value) || 0;
+  let cartoonQty = parseInt(document.getElementById("cartoon").value) || 0;
+  let weddingQty = parseInt(document.getElementById("wedding").value) || 0;
+
+  let total =
+    rainbowQty * prices.rainbow +
+    redvelvetQty * prices.redvelvet +
+    stackedQty * prices.stacked +
+    cartoonQty * prices.cartoon +
+    weddingQty * prices.wedding;
+
+  if (total > 0) {
+    document.getElementById("bill").innerHTML =
+      `Purchase Order Bill!!!<br><span class="total">Total Price: Rs. ${total}</span>`;
+  } else {
+    document.getElementById("bill").innerHTML =
+      `<span style="color:red;">Please order at least 1 cake!</span>`;
+  }
+}
+window.onload = function() {
+  function hauntCake() {
+    const cakes = document.querySelectorAll(".cake-item img");
+    const captions = document.querySelectorAll(".cake-item p");
+
+    if (cakes.length > 0) {
+      const randomIndex = Math.floor(Math.random() * cakes.length);
+
+      // Save original
+      const originalSrc = cakes[randomIndex].src;
+      const originalText = captions[randomIndex].innerText;
+
+      // Swap to troll image + text
+      cakes[randomIndex].src = "cake_lie.png";
+      captions[randomIndex].innerText = "The Cake is a Lie!";
+
+      // Revert after 5 seconds
+      setTimeout(function() {
+        cakes[randomIndex].src = originalSrc;
+        captions[randomIndex].innerText = originalText;
+
+        // Schedule the next haunting after 1–3 minutes
+        const nextDelay = Math.floor(Math.random() * 120000) + 60000;
+        setTimeout(hauntCake, nextDelay);
+
+      }, 5000);
+    }
+  }
+
+  // Start first haunting after 1–3 minutes
+  const firstDelay = Math.floor(Math.random() * 120000) + 60000;
+  setTimeout(hauntCake, firstDelay);
+};
+console.log("Pssst... The Cake is a Lie!");
+</script>
+</head>
+<body>
+
+  <!-- Header -->
+<header>
+  <div class="logo">
+    <img src="cake_logo.png" alt="Cake Shop Logo">
+    <h1>CAKE SHOP</h1>
+  </div>
+  <a href="index.html">Back to Home</a>
+</header>
+
+  <!-- Cake Display -->
+  <div class="cake-list">
+    <div class="cake-item">
+      <img src="Rainbow-Cake.jpg" alt="Rainbow Cake">
+      <p>Rainbow Cake – Rs. 300</p>
+    </div>
+    <div class="cake-item">
+      <img src="red_velvet.jpeg" alt="Red Velvet Cake">
+      <p>Red Velvet Cake – Rs. 250</p>
+    </div>
+    <div class="cake-item">
+      <img src="stacked_cake.jpg" alt="Black Forest Cake">
+      <p>Stacked Cake – Rs. 600</p>
+    </div>
+    <div class="cake-item">
+      <img src="doreamon_cake.png" alt="Black Forest Cake">
+      <p>Cartoon Cake – Rs. 400</p>
+    </div>
+    <div class="cake-item">
+      <img src="wedding_cake.jpg" alt="Black Forest Cake">
+      <p>Wedding Cake – Rs. 750</p>
+    </div>
+  </div>
+
+  <!-- Order Form -->
+<div class="container">
+  <h2>Order Cake</h2>
+
+  <label>Rainbow Cake (Quantity)</label>
+  <input type="number" id="rainbow" value="0" min="0">
+
+  <label>Red Velvet Cake (Quantity)</label>
+  <input type="number" id="redvelvet" value="0" min="0">
+
+  <label>Stacked Cake (Quantity)</label>
+  <input type="number" id="stacked" value="0" min="0">
+
+  <label>Cartoon Cake (Quantity)</label>
+  <input type="number" id="cartoon" value="0" min="0">
+
+  <label>Wedding Cake (Quantity)</label>
+  <input type="number" id="wedding" value="0" min="0">
+
+  <button onclick="calculateOrder()">Place Order</button>
+  <hr>
+  <div class="bill" id="bill"></div>
+</div>
+<footer>
+  <p style="font-size:12px; color:#aaa; font-style:italic;">
+    *The Cake is a Lie*
+  </p>
+</footer>
+
+</body>
+</html>
