@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST Calculator</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f9ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      background: #e0f7fa;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px gray;
+      width: 300px;
+    }
+    h2 {
+      color: #00796b;
+    }
+    select, input[type="number"] {
+      width: 90%;
+      padding: 10px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .results {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #333;
+      text-align: left;
+    }
+    #stonks {
+      display: none;
+      margin-top: 15px;
+      width: 100%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>GST Calculator</h2>
+    
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" placeholder="Enter Amount"><br>
+    
+    <label for="gst">GST (%):</label>
+    <select id="gst">
+      <option value="3">3%</option>
+      <option value="5">5%</option>
+      <option value="12">12%</option>
+      <option value="18">18%</option>
+      <option value="28">28%</option>
+    </select><br>
+
+    <button id="calculate">Calculate</button>
+    <button id="reset">Reset</button>
+
+    <div class="results">
+      <p id="actual">Actual Amount: 0.00</p>
+      <p id="gstAmount">GST: 0.00</p>
+      <p id="total">Total: 0.00</p>
+    </div>
+
+    <img id="stonks" src="stonks.jpeg" alt="Stonks Meme">
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $("#calculate").click(function(){
+        let amount = parseFloat($("#amount").val());
+        let gstRate = parseFloat($("#gst").val());
+
+        if(isNaN(amount) || amount <= 0){
+          alert("Please enter a valid amount.");
+          return;
+        }
+
+        let gstAmount = (amount * gstRate / 100).toFixed(2);
+        let total = (amount + parseFloat(gstAmount)).toFixed(2);
+
+        $("#actual").text("Actual Amount: " + amount.toFixed(2));
+        $("#gstAmount").text("GST: " + gstAmount);
+        $("#total").text("Total: " + total);
+
+        $("#stonks").fadeIn(800); // show meme with fade effect
+      });
+
+      $("#reset").click(function(){
+        $("#amount").val("");
+        $("#gst").val("3");
+        $("#actual").text("Actual Amount: 0.00");
+        $("#gstAmount").text("GST: 0.00");
+        $("#total").text("Total: 0.00");
+        $("#stonks").fadeOut(500);
+      });
+    });
+  </script>
+
+</body>
+</html>
