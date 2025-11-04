@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Story of the Internet - Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: antiquewhite;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+	  color:white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    h2 {
+      margin-bottom: 20px;
+	  text-indent:200px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], input[type="submit"] {
+      width: 50%;
+      padding: 12px;
+      margin: 10px ;
+      border: 30;
+      border-radius: 6px;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #111;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Story of the Internet</h1>
+  </header>
+    <h2>Online Registration Form</h2>
+    <form action="/serverlogic" method="post">
+      <input type="text" name="fullname" placeholder="Full Name" required autofocus>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="username" placeholder="Preferred Username" required>
+      <input type="password" name="password" placeholder="Create Password" required>
+      <input type="submit" value="Register Now">
+    </form>
+  </div>
+  </body>
+</html>

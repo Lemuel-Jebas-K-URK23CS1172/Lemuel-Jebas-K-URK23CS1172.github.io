@@ -1,0 +1,64 @@
+header { background-color: #3b3b3b; padding: 20px; border-color:#3b3b3b; } 
+h1 { text-align: center; font-family: Arial, Helvetica, sans-serif; font-size:20px; color: white; } 
+a{ color:white; text-decoration: none; } a:hover{ color:aqua; } 
+body { margin: 0; background-color: antiquewhite; font-family: Arial, Helvetica, sans-serif; } 
+p{ text-align: center; } 
+div{ width: 1000px; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 0 20px #5c5c5c; text-align: center; margin:50px; margin-left: auto; margin-right: auto; } 
+img{ border-color: black; width: 300px; height: 200px; }
+
+input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+}
+
+button {
+  background-color: #3b3b3b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: aqua;
+  color: black;
+}
+
+#bmi-status {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#bmi-status.normal {
+  color: green;
+}
+#bmi-status.underweight {
+  color: blue;
+}
+#bmi-status.overweight {
+  color: orange;
+}
+#bmi-status.obese {
+  color: red;
+}
+
+/* Meme animation */
+#meme {
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#meme.show {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
